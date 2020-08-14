@@ -6,7 +6,7 @@ import {
     Dimensions,
     TouchableWithoutFeedback
 } from "react-native";
-import { Title, Text, Card } from "react-native-paper";
+import { Text, Card } from "react-native-paper";
 import Carousel from "react-native-snap-carousel";
 import { BASE_PATH_IMG } from "../utils/constants";
 import { ScrollView } from 'react-native';
@@ -29,7 +29,6 @@ export default function CarouselMulti(props) {
 }
 
 function RenderItem(props) {
-    console.log(props);
     const { data, navigation } = props;
     const { id, title, poster_path } = data;
     const imageUrl = `${BASE_PATH_IMG}/w500/${poster_path}`;

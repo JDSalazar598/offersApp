@@ -1,22 +1,16 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import LoginForm from "../components/LoginForm";
+import {View, Text, StyleSheet} from 'react-native';
+import RegisterForm from '../components/RegisterForm';
 
-export default function Login(props) {
-    //destructuring de props
-    const {navigation} = props;
-
-
-
-    return (
-        <>
-            <View style={styles.container}>
-                <LoginForm navigation={navigation}/>
-            </View>
-        </>
-    )
+export default function Register(props) {
+  //destructuring de props para obtener navigation
+  const {navigation} = props;
+  return (  
+    <View style={styles.container}>
+         <RegisterForm navigation={navigation}/>
+    </View>
+  );
 }
-
 const styles = StyleSheet.create({
     header: {
         height: "35%",
@@ -33,4 +27,3 @@ const styles = StyleSheet.create({
         marginTop: "5%",
     }
 });
-

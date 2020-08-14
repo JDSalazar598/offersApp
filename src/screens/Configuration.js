@@ -5,7 +5,8 @@ import { ScrollView, StyleSheet } from 'react-native';
 
 export default function Configuration(props) {
 
-    const {navigation} = props;
+    const {navigation, Tabbar} = props;
+    console.log(Tabbar);
 
     return (
         <>

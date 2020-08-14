@@ -5,7 +5,7 @@ import {
   DarkTheme as DarkThemePaper,
   DefaultTheme as DefaultThemePaper,
   DefaultTheme,
-  Appbar
+  Appbar, Text
 } from 'react-native-paper';
 import {
   NavigationContainer,
@@ -21,14 +21,15 @@ const LeftContent = props => <Avatar.Icon {...props} icon="folder" />
 
 export default function App() {
   const [nameBar, setNameBar] = useState("Home")
+  const [Tabbar, setTabbar] = useState(true);
 
 
   return (
     <PreferencesContext.Provider  style={{ backgroundColor: "#dee2e6" }}>
       <PaperProvider>
-        <StatusBar backgroundColor="#fff" barStyle="dark-content" />
-        <NavigationContainer>
-          <Navigation nameBar={nameBar} setNameBar={setNameBar} />
+        <StatusBar backgroundColor="#fafafa" barStyle="dark-content" />
+        <NavigationContainer>                       
+             <Navigation nameBar={nameBar} Tabbar={Tabbar} setTabbar={setTabbar} setNameBar={setNameBar} />
         </NavigationContainer>
       </PaperProvider>
     </PreferencesContext.Provider>

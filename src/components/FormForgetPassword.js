@@ -1,60 +1,46 @@
 import React from 'react';
 import {TextInput, Button, Text, Title} from 'react-native-paper';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, Dimensions} from 'react-native';
 
-export default function RegisterForm(props) {
+const {width} = Dimensions.get('window');
+
+export default function FormForgetPassword(props) {
   //destructuring de props para obtener navigation
   const {navigation} = props;
+  
+
   return (
     <>
       <View style={styles.continerTitle}>
-        <Title style={styles.title}>Registrate</Title>
+        <Title style={styles.title}>Recupera tu cuenta</Title>
       </View>
-      <View style={styles.containerSubtitle}>
-        <Text>
-          Registra y comparte ofertas con nuestra comunidad.
-        </Text>
+      <View style={styles.containerSubtitle}>        
+        <Text>Ingresa tu numero de telefono o email para buscar la cuenta.</Text>        
       </View>
       <View style={styles.container}>
-        <TextInput
-          theme={{colors: {primary: '#000', underlineColor: 'transparent'}}}
-          style={styles.input}
-          label="Usuario"
-          mode="outlined"
-        />
-        <TextInput
-          theme={{colors: {primary: '#000', underlineColor: 'transparent'}}}
-          style={styles.input}
-          label="Password"
-          mode="outlined"
-        />
         <TextInput
           theme={{colors: {primary: '#000', underlineColor: 'transparent'}}}
           style={styles.input}
           label="Email"
           mode="outlined"
         />
-        <TextInput
-          theme={{colors: {primary: '#000', underlineColor: 'transparent'}}}
-          style={styles.input}
-          label="Telefono"
-          mode="outlined"
-        />
+    
         <Button
           icon="send"
           style={styles.button}
           mode="contained"
           onPress={() => console.log('Pressed')}>
-          <Text style={styles.text}>Registrate</Text>
-        </Button>
+          <Text style={styles.text}>Enviar</Text>
+        </Button>       
+        
+
         <View style={styles.forgot}>
-          <Text style={styles.forgotText}>¿Tienes una cuenta?</Text>
-          <Text
-            style={(styles.forgotText, styles.help)}
-            onPress={() => navigation.navigate('login')}>
-            Inicia Sesion
+          <Text style={styles.forgotText}>
+            ¿tienes cuenta?
           </Text>
+          <Text style={(styles.forgotText, styles.help)} onPress={() => navigation.navigate("login")}>Inicia sesion</Text>
         </View>
+        
       </View>
     </>
   );
@@ -82,12 +68,11 @@ const styles = StyleSheet.create({
     padding: '2%',
     backgroundColor: '#fff',
     justifyContent: 'center',
-    marginTop: "-5%",
+    marginTop:"-5%",
     margin: 10,
     borderRadius: 10,
   },
   input: {
-    marginTop: 5,
     borderRadius: 10,
     backgroundColor: '#fff',
     height: 50,
@@ -122,10 +107,6 @@ const styles = StyleSheet.create({
     height: '10%',
     flexDirection: 'row',
   },
-  buttonCont: {
-    flex: 1,
-    flexDirection: 'column',
-  },
   buttonOutline: {
     height: 45,
     width: '100%',
@@ -135,9 +116,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     fontSize: 20,
     opacity: 0.7,
-  },
-  keycontainer: {
-    flex: 1,
-    zIndex: 100000,
-  },
+  }
 });
