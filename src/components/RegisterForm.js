@@ -1,10 +1,15 @@
-import React from 'react';
-import {TextInput, Button, Text, Title} from 'react-native-paper';
-import {StyleSheet, View} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import { TextInput, Button, Text, Title } from 'react-native-paper';
+import { StyleSheet, View, ScrollView } from 'react-native';
+import { Register } from '../api/Users';
 
-export default function RegisterForm(props) {
+export default function RegisterForm(props) {  
+  const [formData, setFormData] = useState(defaultValue())
+  const [formError, setFormError] = useState({})
+
+
   //destructuring de props para obtener navigation
-  const {navigation} = props;
+  const { navigation } = props;
   return (
     <>
       <View style={styles.continerTitle}>
@@ -17,34 +22,38 @@ export default function RegisterForm(props) {
       </View>
       <View style={styles.container}>
         <TextInput
-          theme={{colors: {primary: '#000', underlineColor: 'transparent'}}}
+          theme={{ colors: { primary: '#000', underlineColor: 'transparent' } }}
+          style={styles.input}
+          label="Nombre"
+          mode="outlined"
+          onChange={(e) => setFormData({...formData,nombre: e.nativeEvent.text})}
+        />
+        <TextInput
+          theme={{ colors: { primary: '#000', underlineColor: 'transparent' } }}
           style={styles.input}
           label="Usuario"
           mode="outlined"
+          onChange={(e) => setFormData({...formData,username: e.nativeEvent.text})}
         />
         <TextInput
-          theme={{colors: {primary: '#000', underlineColor: 'transparent'}}}
+          theme={{ colors: { primary: '#000', underlineColor: 'transparent' } }}
           style={styles.input}
           label="Password"
           mode="outlined"
+          onChange={(e) => setFormData({...formData,password: e.nativeEvent.text})}
         />
         <TextInput
-          theme={{colors: {primary: '#000', underlineColor: 'transparent'}}}
+          theme={{ colors: { primary: '#000', underlineColor: 'transparent' } }}
           style={styles.input}
           label="Email"
           mode="outlined"
-        />
-        <TextInput
-          theme={{colors: {primary: '#000', underlineColor: 'transparent'}}}
-          style={styles.input}
-          label="Telefono"
-          mode="outlined"
+          onChange={(e) => setFormData({...formData,correo: e.nativeEvent.text})}
         />
         <Button
           icon="send"
           style={styles.button}
           mode="contained"
-          onPress={() => console.log('Pressed')}>
+          onPress={() => Register(formData) }>
           <Text style={styles.text}>Registrate</Text>
         </Button>
         <View style={styles.forgot}>
@@ -60,11 +69,23 @@ export default function RegisterForm(props) {
   );
 }
 
+//valores del formulario por defecto
+function defaultValue(){
+  return ({
+      correo : "",
+      password: "",
+      username: "",
+      telefono: "",
+      nombre: "",
+  })
+}
+
 const styles = StyleSheet.create({
   continerTitle: {
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
+    position: "relative"
   },
   containerSubtitle: {
     padding: '5%',

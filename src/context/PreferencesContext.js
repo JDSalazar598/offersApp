@@ -1,8 +1,8 @@
 import {createContext} from 'react';
 
 const PreferencesContext = createContext({
-    theme: '',
-    ToggleTheme: () => {},
+    tabBar: '',
+    toggleTabBar: () => {},
 });
 
 export default PreferencesContext;

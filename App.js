@@ -14,18 +14,30 @@ import {
 } from '@react-navigation/native';
 import Navigation from './src/navigation/Navigation';
 import PreferencesContext from './src/context/PreferencesContext';
-import icons from 'react-native-vector-icons/MaterialIcons';
+import PreferencesContext from './src/context/PreferencesContext';
 
 
 const LeftContent = props => <Avatar.Icon {...props} icon="folder" />
 
 export default function App() {
   const [nameBar, setNameBar] = useState("Home")
-  const [Tabbar, setTabbar] = useState(true);
+  const [tabbar, setTabbar] = useState(true);
 
+
+  const toggleTabBar = () => {
+    setTabbar(tabBar === true ? false : true);
+  };
+
+  const preference = useMemo(
+    () => ({
+      toggleTabBar,
+      tabBar,
+    }),
+    [tabBar],
+  );
 
   return (
-    <PreferencesContext.Provider  style={{ backgroundColor: "#dee2e6" }}>
+    <PreferencesContext.Provider value={preference}  style={{ backgroundColor: "#dee2e6" }}>
       <PaperProvider>
         <StatusBar backgroundColor="#fafafa" barStyle="dark-content" />
         <NavigationContainer>                       

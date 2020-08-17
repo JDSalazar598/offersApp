@@ -4,10 +4,7 @@ import { List, Colors, Appbar, TouchableRipple } from 'react-native-paper';
 import { ScrollView, StyleSheet } from 'react-native';
 
 export default function Configuration(props) {
-
-    const {navigation, Tabbar} = props;
-    console.log(Tabbar);
-
+    const {navigation} = props;
     return (
         <>
             <ScrollView backgroundColor="#fafafa">

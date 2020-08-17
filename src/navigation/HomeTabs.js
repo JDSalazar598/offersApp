@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Home from '../screens/Home';
 import Movie from '../screens/Movie';
 import ConfigurationStack from '../navigation/ConfigurationStack';
 import {StyleSheet, Text} from 'react-native';
-const Tab = createBottomTabNavigator();
+const Tab = createMaterialBottomTabNavigator();
 
 export default function Navigation(props) {
   //destructuring de props para obtener el estado del tab bar
@@ -15,20 +15,14 @@ export default function Navigation(props) {
     <>
         <Tab.Navigator
           initialRouteName="Home"
-          tabBarOptions={{
-            activeTintColor: "#000",
-            showLabel: false,
-            keyboardHidesTabBar: true
-          }}
+          activeColor="#000"
           barStyle={styles.shadow}
-          screenOptions={{
-            tabBarVisible: true
-          }}
           >
           <Tab.Screen
             name="Home"
             component={Home}
             options={{
+              tabBarLabel: true,
               tabBarIcon: ({focused, color}) => {
                 let iconname;
                 iconname = focused ? 'home' : 'home-outline';
@@ -46,6 +40,7 @@ export default function Navigation(props) {
             name="Movie"
             component={Movie}
             options={{
+              tabBarLabel: true,
               tabBarIcon: ({focused, color}) => {
                 let iconname;
                 iconname = focused ? 'store' : 'store-outline';
@@ -64,6 +59,7 @@ export default function Navigation(props) {
             component={ConfigurationStack}
             nameBar={nameBar}
             options={{
+              tabBarLabel: true,
               tabBarIcon: ({focused, color}) => {
                 let iconname;
                 iconname = focused

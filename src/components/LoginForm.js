@@ -1,14 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {TextInput, Button, Text, Title} from 'react-native-paper';
 import {StyleSheet, View, Dimensions} from 'react-native';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import {Login} from '../api/Users';
 
 const {width} = Dimensions.get('window');
 
 export default function LoginForm(props) {
     //destructuring de props para obtener navigation
     const {navigation} = props;
+    //objeto useState para almacenar datos del formulario
+    const [formData, setFormData] = useState(defaultValue())
     
-    console.log(navigation);
 
   return (
     <>
@@ -19,8 +22,9 @@ export default function LoginForm(props) {
         <TextInput
           theme={{colors: {primary: '#000', underlineColor: 'transparent'}}}
           style={styles.input}
-          label="Email"
+          label="Username"
           mode="outlined"
+          onChange={(e) => setFormData({...formData,username: e.nativeEvent.text})}
         />
         <TextInput
           theme={{colors: {primary: '#000', underlineColor: 'transparent'}}}
@@ -28,11 +32,12 @@ export default function LoginForm(props) {
           label="Password"
           secureTextEntry={true}
           mode="outlined"
+          onChange={(e) => setFormData({...formData,password: e.nativeEvent.text})}
         />
 
         <View style={styles.forgot}>
           <Text style={styles.forgotText}>
-            ¿Olvidaste tus datsos de inicio de sesiòn?
+            ¿Olvidaste tus datos de inicio de sesiòn?
           </Text>
           <Text style={(styles.forgotText, styles.help)} onPress={() => navigation.navigate("forget")}>Obtèn ayuda</Text>
         </View>
@@ -41,7 +46,7 @@ export default function LoginForm(props) {
           icon="login"
           style={styles.button}
           mode="contained"
-          onPress={() => console.log('Pressed')}>
+          onPress={() => Login(formData)}>
           <Text style={styles.text}>Iniciar Sesion</Text>
         </Button>       
         
@@ -56,6 +61,14 @@ export default function LoginForm(props) {
       </View>
     </>
   );
+}
+
+//valores del formulario por defecto
+function defaultValue(){
+  return ({
+      password: "",
+      username: "",
+  })
 }
 
 const styles = StyleSheet.create({
