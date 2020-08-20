@@ -55,7 +55,8 @@ const styles = StyleSheet.create({
   containerSubtitle: {
     padding: '5%',
     backgroundColor: '#fff',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    alignSelf: "center"
   },
   title: {
     color: '#000',
@@ -65,7 +66,7 @@ const styles = StyleSheet.create({
     alignContent: 'center',
   },
   container: {
-    padding: '2%',
+    padding: '5%',
     backgroundColor: '#fff',
     justifyContent: 'center',
     marginTop:"-5%",

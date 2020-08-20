@@ -31,9 +31,9 @@ export default function RegisterForm(props) {
         <TextInput
           theme={{ colors: { primary: '#000', underlineColor: 'transparent' } }}
           style={styles.input}
-          label="Usuario"
+          label="Email"
           mode="outlined"
-          onChange={(e) => setFormData({...formData,username: e.nativeEvent.text})}
+          onChange={(e) => setFormData({...formData,correo: e.nativeEvent.text})}
         />
         <TextInput
           theme={{ colors: { primary: '#000', underlineColor: 'transparent' } }}
@@ -41,13 +41,6 @@ export default function RegisterForm(props) {
           label="Password"
           mode="outlined"
           onChange={(e) => setFormData({...formData,password: e.nativeEvent.text})}
-        />
-        <TextInput
-          theme={{ colors: { primary: '#000', underlineColor: 'transparent' } }}
-          style={styles.input}
-          label="Email"
-          mode="outlined"
-          onChange={(e) => setFormData({...formData,correo: e.nativeEvent.text})}
         />
         <Button
           icon="send"
@@ -85,12 +78,13 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    position: "relative"
+    position: "relative",
   },
   containerSubtitle: {
     padding: '5%',
     backgroundColor: '#fff',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    alignSelf: "center"
   },
   title: {
     color: '#000',
@@ -100,7 +94,7 @@ const styles = StyleSheet.create({
     alignContent: 'center',
   },
   container: {
-    padding: '2%',
+    padding: '5%',
     backgroundColor: '#fff',
     justifyContent: 'center',
     marginTop: "-5%",

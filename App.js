@@ -1,50 +1,40 @@
-import React, { useMemo, useState } from "react";
-import { StatusBar, StyleSheet } from 'react-native';
+import React, {useMemo, useState} from 'react';
+import {StatusBar, LogBox} from 'react-native';
 import {
   Provider as PaperProvider,
   DarkTheme as DarkThemePaper,
   DefaultTheme as DefaultThemePaper,
   DefaultTheme,
-  Appbar, Text
+  Appbar,
+  Text,
 } from 'react-native-paper';
 import {
   NavigationContainer,
   DarkTheme as DarkThemeNavigation,
-  DefaultTheme as DefaultThemeNavigation
+  DefaultTheme as DefaultThemeNavigation,
 } from '@react-navigation/native';
-import Navigation from './src/navigation/Navigation';
+import HomeTabs from './src/navigation/HomeTabs';
 import PreferencesContext from './src/context/PreferencesContext';
-import PreferencesContext from './src/context/PreferencesContext';
+import {createStackNavigator} from '@react-navigation/stack';
+import LoginStack from './src/navigation/LoginStack';
 
-
-const LeftContent = props => <Avatar.Icon {...props} icon="folder" />
+const Stack = createStackNavigator();
+const LeftContent = (props) => <Avatar.Icon {...props} icon="folder" />;
 
 export default function App() {
-  const [nameBar, setNameBar] = useState("Home")
-  const [tabbar, setTabbar] = useState(true);
-
-
-  const toggleTabBar = () => {
-    setTabbar(tabBar === true ? false : true);
-  };
-
-  const preference = useMemo(
-    () => ({
-      toggleTabBar,
-      tabBar,
-    }),
-    [tabBar],
-  );
-
+  const [nameBar, setNameBar] = useState('Home');
+  LogBox.ignoreLogs(['Warning: Cannot update a component']);
   return (
-    <PreferencesContext.Provider value={preference}  style={{ backgroundColor: "#dee2e6" }}>
+    <PreferencesContext.Provider style={{backgroundColor: '#dee2e6'}}>
       <PaperProvider>
         <StatusBar backgroundColor="#fafafa" barStyle="dark-content" />
-        <NavigationContainer>                       
-             <Navigation nameBar={nameBar} Tabbar={Tabbar} setTabbar={setTabbar} setNameBar={setNameBar} />
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="Home" screenOptions={{headerShown: false}}>
+            <Stack.Screen name="Home" component={HomeTabs}  />
+            <Stack.Screen name="LoginStack" component={LoginStack}  />
+          </Stack.Navigator>
         </NavigationContainer>
       </PaperProvider>
     </PreferencesContext.Provider>
   );
 }
-

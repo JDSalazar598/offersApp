@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {TextInput, Button, Text, Title} from 'react-native-paper';
 import {StyleSheet, View, Dimensions} from 'react-native';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import {Login} from '../api/Users';
 
 const {width} = Dimensions.get('window');
@@ -15,9 +14,6 @@ export default function LoginForm(props) {
 
   return (
     <>
-      <View style={styles.continerTitle}>
-        <Title style={styles.title}>Login</Title>
-      </View>
       <View style={styles.container}>
         <TextInput
           theme={{colors: {primary: '#000', underlineColor: 'transparent'}}}
@@ -85,7 +81,8 @@ const styles = StyleSheet.create({
     alignContent: 'center',
   },
   container: {
-    padding: '2%',
+    padding: '5%',
+    flex: 0,
     backgroundColor: '#fff',
     justifyContent: 'center',
     margin: 10,
@@ -140,9 +137,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     fontSize: 20,
     opacity: 0.7,
-  },
-  keycontainer: {
-    flex: 1,
-    zIndex: 100000,
-  },
+  }
 });

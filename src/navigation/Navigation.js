@@ -2,14 +2,19 @@ import React, {useState} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Home from '../screens/Home';
-import Movie from '../screens/Movie';
+import Community from '../screens/Community';
+import Favorites from '../screens/Favorites';
 import ConfigurationStack from '../navigation/ConfigurationStack';
 import {StyleSheet, Text} from 'react-native';
+import {getMyStringValue} from '../api/Auth';
 const Tab = createBottomTabNavigator();
 
 export default function Navigation(props) {
   //destructuring de props para obtener el estado del tab bar
-  const {nameBar} = props;
+  const sesion = getMyStringValue();
+
+
+  console.log(sesion);
 
   return (
     <>
@@ -43,12 +48,12 @@ export default function Navigation(props) {
             }}
           />
           <Tab.Screen
-            name="Movie"
-            component={Movie}
+            name="community"
+            component={Community}
             options={{
               tabBarIcon: ({focused, color}) => {
                 let iconname;
-                iconname = focused ? 'store' : 'store-outline';
+                iconname = focused ? 'account-details' : 'account-details-outline';
                 return (
                   <MaterialCommunityIcons
                     name={iconname}
@@ -59,10 +64,29 @@ export default function Navigation(props) {
               },
             }}
           />
+          {sesion ? (
+              <Tab.Screen
+              name="favorites"
+              component={Favorites}
+              options={{
+                tabBarIcon: ({focused, color}) => {
+                  let iconname;
+                  iconname = focused ? 'star' : 'star-outline';
+                  return (
+                    <MaterialCommunityIcons
+                      name={iconname}
+                      color={color}
+                      size={26}
+                    />
+                  );
+                },
+              }}
+            />): ('')
+          }
+        
           <Tab.Screen
             name="Configuration"
             component={ConfigurationStack}
-            nameBar={nameBar}
             options={{
               tabBarIcon: ({focused, color}) => {
                 let iconname;
@@ -80,6 +104,7 @@ export default function Navigation(props) {
             }}
           />
         </Tab.Navigator>
+        
     </>
   );
 }

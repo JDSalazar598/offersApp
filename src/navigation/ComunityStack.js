@@ -1,35 +1,38 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
-import Configuration from '../screens/Configuration';
-import LoginStack from '../navigation/LoginStack';
+import Community from '../screens/Community';
+import OpenCamera from '../screens/OpenCamera';
 import OpenMap from '../screens/OpenMap';
+import Navigation from './Navigation';
 
 const Stack = createStackNavigator();
 
-export default function ConfigurationStack({navigation, route}) {
+export default function CommunityStack({navigation, route}) {
+    navigation.setOptions({tabBarVisible: false});
   if (route.state && route.state.index > 0) {
     navigation.setOptions({tabBarVisible: false});
   } else {
     navigation.setOptions({tabBarVisible: true});
   }
+
   return (
-    <Stack.Navigator initialRouteName="configuration">
+    <Stack.Navigator initialRouteName="comunity">
       <Stack.Screen
-        name="configuration"
-        component={Configuration}
-        options={{title: 'Configuracion de cuenta', style: styles.bar}}
+        name="comunity"
+        component={Community}
+        options={{headerShown: false, tabBarVisible: false}}
       />
       <Stack.Screen
-        name="login"
-        component={LoginStack}
-        options={{title: '', headerShown: false, tabBarVisible: false}}
+        name="openCamera"
+        component={OpenCamera}
+        options={{title: '', headerShown: true}}
         backgroundColor="#1976d2"
       />
       <Stack.Screen
         name="openMap"
         component={OpenMap}
-        options={{title: '', headerShown: false, tabBarVisible: false}}
+        options={{title: '', headerShown: true}}
         backgroundColor="#1976d2"
       />
     </Stack.Navigator>

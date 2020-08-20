@@ -1,36 +1,31 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import LoginForm from "../components/LoginForm";
+import {View, StyleSheet, ScrollView, KeyboardAvoidingView} from 'react-native';
+import LoginForm from '../components/LoginForm';
+import {Text} from 'react-native-paper';
 
 export default function Login(props) {
-    //destructuring de props
-    const {navigation} = props;
-
-
-
-    return (
-        <>
-            <View style={styles.container}>
-                <LoginForm navigation={navigation}/>
-            </View>
-        </>
-    )
+  //destructuring de props
+  const {navigation} = props;
+  return (
+    <View style={styles.container}>
+      <Text style={styles.Title}>Login</Text>
+      <LoginForm navigation={navigation} />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    header: {
-        height: "35%",
-        width: "100%",
-        backgroundColor: "#00838f",
-    },
-    container: {
-        minHeight: "95%",
-        width: "90%",
-        marginLeft: "5%",
-        marginRight: "5%",
-        backgroundColor: "#fff",
-        justifyContent: "center",
-        marginTop: "5%",
-    }
+  container: {
+    flex: 1,
+    height: '100%',
+    width: '100%',
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+    position: 'absolute',
+  },
+  Title: {
+    fontSize: 40,
+    fontWeight: 'bold',
+    alignSelf: 'center',
+  },
 });
-

@@ -9,8 +9,11 @@ import { map } from "lodash";
 import CarouselMulti from "../components/CarouselMulti";
 import Navigation from "../navigation/Navigation";
 
+
 export default function Home(props) {
     const { navigation } = props;
+
+
     const { colorTab } = navigation;
     const [newsMovies, setNewsMovies] = useState(null);
     const [genreList, setGenreList] = useState([]);
@@ -39,13 +42,28 @@ export default function Home(props) {
         setGenreSelected(genreId);
     };
 
+    //funcion utilizada para detectar el movimiento del scroll
+    const ScrollMove = (event) => {
+        const currentOffset = event.nativeEvent.contentOffset.y;
+        const dif = currentOffset - (this.offset || 0);  
+    
+        if (dif < 2) {
+          navigation.setOptions({ tabBarVisible: true });
+        } else{
+          navigation.setOptions({ tabBarVisible: false });
+        }
+        console.log('dif=',dif);
+    
+        this.offset = currentOffset;
+    }
+
     return (
         <>
             <Appbar.Header style={styles.shadow}>
                 <Appbar.Content title="Home" />
             </Appbar.Header>
 
-            <ScrollView showsVerticalScrollIndicator={false} >
+            <ScrollView showsVerticalScrollIndicator={false}   onScroll={(e) =>  ScrollMove(e)} >
                 {newsMovies && (
                     <View style={styles.news}>
                         <Title style={styles.newsTitle}>Ofertas Especiales</Title>

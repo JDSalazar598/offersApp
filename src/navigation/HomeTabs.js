@@ -1,28 +1,30 @@
-import React, {useState} from 'react';
-import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+import React from 'react';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Home from '../screens/Home';
-import Movie from '../screens/Movie';
+import Community from '../navigation/ComunityStack';
+import Favorites from '../screens/Favorites';
 import ConfigurationStack from '../navigation/ConfigurationStack';
-import {StyleSheet, Text} from 'react-native';
-const Tab = createMaterialBottomTabNavigator();
+import {StyleSheet, Text} from 'react-native'
+const Tab = createBottomTabNavigator();
 
-export default function Navigation(props) {
-  //destructuring de props para obtener el estado del tab bar
-  const {nameBar} = props;
-
+export default function HomeTabs() {
   return (
+    
     <>
         <Tab.Navigator
           initialRouteName="Home"
-          activeColor="#000"
+          tabBarOptions={{
+            activeTintColor: '#000',
+            showLabel: false,
+          }}
           barStyle={styles.shadow}
           >
           <Tab.Screen
             name="Home"
             component={Home}
             options={{
-              tabBarLabel: true,
+              title: '',
               tabBarIcon: ({focused, color}) => {
                 let iconname;
                 iconname = focused ? 'home' : 'home-outline';
@@ -37,13 +39,15 @@ export default function Navigation(props) {
             }}
           />
           <Tab.Screen
-            name="Movie"
-            component={Movie}
+            name="community"
+            component={Community}
             options={{
-              tabBarLabel: true,
+              title: '',
               tabBarIcon: ({focused, color}) => {
                 let iconname;
-                iconname = focused ? 'store' : 'store-outline';
+                iconname = focused
+                  ? 'account-details'
+                  : 'account-details-outline';
                 return (
                   <MaterialCommunityIcons
                     name={iconname}
@@ -55,11 +59,30 @@ export default function Navigation(props) {
             }}
           />
           <Tab.Screen
-            name="Configuration"
-            component={ConfigurationStack}
-            nameBar={nameBar}
+            name="Favoritos"
+            component={Favorites}
             options={{
-              tabBarLabel: true,
+              title: null,
+              tabBarBadge: 3,
+              tabBarIcon: ({focused, color}) => {
+                let iconname;
+                title: '',
+                iconname = focused ? 'fire' : 'fire';
+                return (
+                  <MaterialCommunityIcons
+                    name={iconname}
+                    color={color}
+                    size={26}
+                  />
+                );
+              },
+            }}
+          />
+          <Tab.Screen
+            name="ConfigurationStack"
+            component={ConfigurationStack}            
+            options={{
+              title: '',
               tabBarIcon: ({focused, color}) => {
                 let iconname;
                 iconname = focused
@@ -76,6 +99,7 @@ export default function Navigation(props) {
             }}
           />
         </Tab.Navigator>
+     
     </>
   );
 }

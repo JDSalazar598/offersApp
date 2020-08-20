@@ -6,18 +6,15 @@ import ForgetPasswordStack from '../navigation/ForgetPasswordStack'
 
 const Stack = createStackNavigator();
 
-export default function ContactStack(props) 
+
+export default function LoginStack(props) 
 {
   return (
     <Stack.Navigator
-      screenOptions={{
-        headerShown: false,
-        header: null,
-        tabBarVisible: false
-      }}>
-      <Stack.Screen name="login"  component={Login}  screenOptions={{headerShown: false, header: null}}/>
-      <Stack.Screen name="register"  component={RegisterStack}  screenOptions={{headerShown: false, header: null}}/>
-      <Stack.Screen name="forget"  component={ForgetPasswordStack}  screenOptions={{headerShown: false, header: null}}/>
+    initialRouteName="login">
+      <Stack.Screen name="login"  component={Login}  options={{headerShown: false}}/>
+      <Stack.Screen name="register"  component={RegisterStack}  options={{headerShown: false, header: null}}/>
+      <Stack.Screen name="forget"  component={ForgetPasswordStack}  options={{headerShown: false, header: null}}/>
     </Stack.Navigator>
   );
 }

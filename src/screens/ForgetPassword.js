@@ -18,12 +18,9 @@ const styles = StyleSheet.create({
         backgroundColor: "#00838f",
     },
     container: {
-        minHeight: "95%",
-        width: "90%",
-        marginLeft: "5%",
-        marginRight: "5%",
+        minHeight: "100%",
+        width: "100%",
         backgroundColor: "#fff",
-        justifyContent: "center",
-        marginTop: "5%",
+        justifyContent: "center"
     }
 });

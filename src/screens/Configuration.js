@@ -2,6 +2,7 @@
 import React from 'react';
 import { List, Colors, Appbar, TouchableRipple } from 'react-native-paper';
 import { ScrollView, StyleSheet } from 'react-native';
+import {logout} from '../api/Auth';
 
 export default function Configuration(props) {
     const {navigation} = props;
@@ -37,6 +38,17 @@ export default function Configuration(props) {
                         title="Ubicacion"
                         description="Actualiza tu ubicacion para estar enterado de las ofertas que tienes cerca"
                         left={props => <List.Icon {...props} icon="map-marker" color={Colors.black} style={styles.icon} />}
+                    />
+                </TouchableRipple>
+                
+                <TouchableRipple
+                    rippleColor="rgba(0, 0, 0, .20)"
+                    onPress={() => logout()}
+                >
+                    <List.Item
+                        title="Cerrar Sesion"
+                        description="Cierra Sesion y vuelve cuando quieras"
+                        left={props => <List.Icon {...props} icon="logout" color={Colors.black} style={styles.icon} />}
                     />
                 </TouchableRipple>
             </ScrollView>
