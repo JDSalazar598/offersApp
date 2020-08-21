@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   containerSubtitle: {
-    padding: '5%',
+    padding: '6%',
     backgroundColor: '#fff',
     justifyContent: 'center',
     alignSelf: "center"

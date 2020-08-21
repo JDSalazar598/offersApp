@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {IconButton, Colors} from 'react-native-paper';
 import {RNCamera} from 'react-native-camera';
 
@@ -20,12 +15,12 @@ const PendingView = () => (
   </View>
 );
 
-export default function Camera() {
+export default function Camera({navigation}) {
   takePicture = async () => {
     if (this.camera) {
       const options = {quality: 0.5, base64: true};
       const data = await this.camera.takePictureAsync(options);
-      console.log(data.base64);
+      navigation.navigate("previewImage", {img: data.base64});
     }
   };
   return (
@@ -56,15 +51,21 @@ export default function Camera() {
       <View
         style={{
           position: 'absolute',
-          justifyContent: 'flex-end',
-          alignItems: 'center',
+          flexDirection: 'row',
           height: '100%',
           width: '100%',
+          alignItems: 'center',
         }}>
+        <TouchableOpacity
+          style={styles.back}
+          onPress={() => navigation.goBack()}
+          >
+          <IconButton icon="close" color={Colors.white} size={40} />
+        </TouchableOpacity>
         <TouchableOpacity
           onPress={this.takePicture.bind(this)}
           style={styles.capture}>
-          <IconButton icon="camera" color={Colors.white} size={70} />
+          <IconButton icon="circle-slice-8" color={Colors.white} size={90} />
         </TouchableOpacity>
       </View>
     </View>
@@ -87,10 +88,12 @@ const styles = StyleSheet.create({
   capture: {
     flex: 0,
     backgroundColor: 'transparent',
-    borderRadius: 5,
-    padding: 15,
-    paddingHorizontal: 20,
-    alignSelf: 'center',
+    alignSelf: 'flex-end',
+  },
+  back: {
+    flex: 0,
+    backgroundColor: 'transparent',
+    alignSelf: 'flex-start',
     margin: 20,
   },
 });

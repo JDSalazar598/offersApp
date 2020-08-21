@@ -22,6 +22,7 @@
     "react-native": "0.63.2",
     "react-native-avoiding-keyboard-scroll-view": "^1.1.3",
     "react-native-camera": "^3.36.0",
+    "react-native-geolocation-service": "^5.0.0",
     "react-native-gesture-handler": "^1.7.0",
     "react-native-maps": "0.27.1",
     "react-native-paper": "^4.0.1",

@@ -11,7 +11,7 @@ import Navigation from "../navigation/Navigation";
 
 
 export default function Home(props) {
-    const { navigation } = props;
+    const { navigation, route} = props;
 
 
     const { colorTab } = navigation;

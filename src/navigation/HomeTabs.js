@@ -2,18 +2,18 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Home from '../screens/Home';
-import Community from '../navigation/ComunityStack';
+import Community from '../screens/Community';
 import Favorites from '../screens/Favorites';
 import ConfigurationStack from '../navigation/ConfigurationStack';
 import {StyleSheet, Text} from 'react-native'
+import OpenCamera from '../screens/OpenCamera';
+import OpenMap from '../screens/OpenMap';
 const Tab = createBottomTabNavigator();
 
 export default function HomeTabs() {
-  return (
-    
+  return (    
     <>
         <Tab.Navigator
-          initialRouteName="Home"
           tabBarOptions={{
             activeTintColor: '#000',
             showLabel: false,
@@ -22,7 +22,7 @@ export default function HomeTabs() {
           >
           <Tab.Screen
             name="Home"
-            component={Home}
+            component={Home}            
             options={{
               title: '',
               tabBarIcon: ({focused, color}) => {
@@ -43,6 +43,7 @@ export default function HomeTabs() {
             component={Community}
             options={{
               title: '',
+              showLabel: false,
               tabBarIcon: ({focused, color}) => {
                 let iconname;
                 iconname = focused
@@ -57,7 +58,7 @@ export default function HomeTabs() {
                 );
               },
             }}
-          />
+          />       
           <Tab.Screen
             name="Favoritos"
             component={Favorites}

@@ -16,8 +16,9 @@ import {
 import HomeTabs from './src/navigation/HomeTabs';
 import PreferencesContext from './src/context/PreferencesContext';
 import {createStackNavigator} from '@react-navigation/stack';
+import CameraStack from './src/navigation/CameraStack';
 import LoginStack from './src/navigation/LoginStack';
-
+import OpenMap from './src/screens/OpenMap';
 const Stack = createStackNavigator();
 const LeftContent = (props) => <Avatar.Icon {...props} icon="folder" />;
 
@@ -29,9 +30,27 @@ export default function App() {
       <PaperProvider>
         <StatusBar backgroundColor="#fafafa" barStyle="dark-content" />
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="Home" screenOptions={{headerShown: false}}>
-            <Stack.Screen name="Home" component={HomeTabs}  />
-            <Stack.Screen name="LoginStack" component={LoginStack}  />
+          <Stack.Navigator
+            initialRouteName="HomeTabs"
+            screenOptions={{headerShown: false}}>
+            <Stack.Screen name="HomeTabs" component={HomeTabs} />
+            <Stack.Screen
+              name="cameraStack"
+              screenOptions={{headerShown: true}}
+              component={CameraStack}
+            />
+            <Stack.Screen
+              name="login"
+              component={LoginStack}
+              options={{title: '', headerShown: false, tabBarVisible: false}}
+              backgroundColor="#1976d2"
+            />
+            <Stack.Screen
+              name="OpenMap"
+              component={OpenMap}
+              options={{title: '', headerShown: true, tabBarVisible: false}}
+              backgroundColor="#1976d2"
+            />
           </Stack.Navigator>
         </NavigationContainer>
       </PaperProvider>

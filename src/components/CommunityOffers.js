@@ -56,7 +56,7 @@ function RenderItem(props) {
               icon="map-marker-outline"
               color={Colors.black}
               size={25}
-              onPress={() => navigation.navigate('openMap')}
+              onPress={() => navigation.navigate('OpenMap')}
             />
             <IconButton
               icon="share-outline"

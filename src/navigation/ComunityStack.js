@@ -4,24 +4,26 @@ import {createStackNavigator} from '@react-navigation/stack';
 import Community from '../screens/Community';
 import OpenCamera from '../screens/OpenCamera';
 import OpenMap from '../screens/OpenMap';
-import Navigation from './Navigation';
 
 const Stack = createStackNavigator();
 
 export default function CommunityStack({navigation, route}) {
-    navigation.setOptions({tabBarVisible: false});
+
+    console.log(route)
+
+    console.log(route.params.visible);
   if (route.state && route.state.index > 0) {
     navigation.setOptions({tabBarVisible: false});
-  } else {
-    navigation.setOptions({tabBarVisible: true});
+  }else{
+    navigation.setOptions({tabBarVisible: true})
   }
 
   return (
-    <Stack.Navigator initialRouteName="comunity">
+    <Stack.Navigator>
       <Stack.Screen
         name="comunity"
         component={Community}
-        options={{headerShown: false, tabBarVisible: false}}
+        options={{headerShown: false}}
       />
       <Stack.Screen
         name="openCamera"

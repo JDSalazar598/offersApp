@@ -15,8 +15,7 @@ import CommunityOffers from '../components/CommunityOffers';
 import {BottomTabNavigationOptions} from '@react-navigation/bottom-tabs'
 import { CommonActions } from '@react-navigation/native';
 
-export default function Community(props) {
-  const {navigation} = props;
+export default function Community({navigation}) {
   const [newsMovies, setNewsMovies] = useState(null);
 
   const [visible, setVisible] = React.useState(false);
@@ -24,12 +23,10 @@ export default function Community(props) {
   const ScrollMove = (event) => {
     const currentOffset = event.nativeEvent.contentOffset.y;
     const dif = currentOffset - (this.offset || 0);
-
-    if(dif < 2){
-      navigation.setOptions({tabBarVisible: true})
-    }
-    else{
-      navigation.setOptions({tabBarVisible: false})
+    if (dif < 2) {
+      navigation.setOptions({ tabBarVisible: true });
+    } else{
+      navigation.setOptions({ tabBarVisible: false });
     }
   
     console.log('dif=', dif);
@@ -53,7 +50,7 @@ export default function Community(props) {
         <Appbar.Content title="Comunidad" />
         <Appbar.Action
           icon="camera"
-          onPress={() => navigation.navigate('openCamera')}
+          onPress={() => navigation.navigate('cameraStack')}
         />
       </Appbar.Header>
       <ScrollView
