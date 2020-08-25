@@ -11,25 +11,21 @@ export default function Preview(props) {
       <View style={styles.container}>
         
         <Image
-          style={{height: '100%', width: '100%'}}
+          style={{height: '60%', width: '100%'}}
           source={{uri: `data:image/jpg;base64,${img}`}}
         />
         <View
           style={{
             flexDirection: 'row',
             flex: 1, 
-            position: 'absolute',
           }}>
           <View
             style={{
-              borderTopRightRadius: 20,
-              borderTopLeftRadius: 20,
               width: '100%',
-              height: '140%',
+              height: '100%',
               flexDirection: 'row',
-              opacity: 0.9,
               alignSelf: 'flex-end',
-              backgroundColor: 'black',
+              backgroundColor: '#fff',
               flex: 1, 
             }}>
             <TextInput

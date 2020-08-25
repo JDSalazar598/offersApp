@@ -1,8 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, ScrollView, View, Text } from 'react-native';
-import { Appbar } from 'react-native-paper';
-import { Title } from 'react-native-paper';
+import { StyleSheet, ScrollView, View, Text, RefreshControl} from 'react-native';
+import { Appbar, Title } from 'react-native-paper';
 import { getNewsMoviesApi, getAllGenres, getMoviesForGenres } from '../api/movies';
 import CarouselVertical from '../components/CarouselVertical';
 import { map } from "lodash";

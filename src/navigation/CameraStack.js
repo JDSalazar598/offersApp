@@ -2,6 +2,7 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import PreviewImage from '../screens/PreviewImage';
 import OpenCamera from '../screens/OpenCamera';
+import Gallery from '../screens/Gallery';
 import {View} from 'react-native';
 const Stack = createStackNavigator();
 
@@ -11,22 +12,25 @@ export default function CameraStack() {
       <Stack.Screen
         name="openCamera"
         component={OpenCamera}
-        screenOptions={{
-          headerShown: false,
-          header: null,
-        }}
       />
       <Stack.Screen
         name="previewImage"
         options={{
           title: '',
-          headerTransparent: true,
-          headerTintColor: '#fff',
+          headerTransparent: false,
+          headerTintColor: '#000',
           headerStyle: {
-            backgroundColor: '#e7305b'
+            backgroundColor: '#fff'
          } 
         }}
         component={PreviewImage}
+      />
+      <Stack.Screen
+        name="gallery"
+        options={{
+          title: ''
+        }}
+        component={Gallery}
       />
     </Stack.Navigator>
   );

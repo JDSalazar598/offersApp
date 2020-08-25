@@ -8,9 +8,6 @@ import OpenMap from '../screens/OpenMap';
 const Stack = createStackNavigator();
 
 export default function CommunityStack({navigation, route}) {
-
-    console.log(route)
-
     console.log(route.params.visible);
   if (route.state && route.state.index > 0) {
     navigation.setOptions({tabBarVisible: false});
@@ -28,7 +25,7 @@ export default function CommunityStack({navigation, route}) {
       <Stack.Screen
         name="openCamera"
         component={OpenCamera}
-        options={{title: '', headerShown: true}}
+        options={{title: 'Camara', headerShown: true}}
         backgroundColor="#1976d2"
       />
       <Stack.Screen
